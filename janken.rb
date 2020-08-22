@@ -55,11 +55,9 @@ class Janken
   end
 end
 
-# 変数「player」にPlayerをインスタンス化したものを代入します。
+
 player = Player.new
-# 変数「enemy」にEnemyをインスタンス化したものを代入します。
 enemy = Enemy.new
-# 変数「janken」にJankenをインスタンス化したものを代入します。
 janken = Janken.new
 
 # ジャンケンをプレイ
