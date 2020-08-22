@@ -29,7 +29,6 @@ end
 class Enemy
   def hand
     enemy_hand = rand(2)
-    return enemy_hand
   end
 end
 
@@ -40,18 +39,19 @@ class Janken
     janken = ["グー", "チョキ", "パー"]  
     puts "相手の手は#{janken[enemy_hand]}です。"
       
-      # 勝負の判定
-      if player_hand === enemy_hand
-        puts "あいこ"
-        return true
-      elsif 
-        (player_hand === 0 && enemy_hand === 1 || player_hand === 2 && enemy_hand === 0 || player_hand === 1 && enemy_hand == 2)
-        puts "あなたの勝ちです！"
-        return false
-      else
-        puts "あなたの負けです"
-        return false
-      end
+    # 勝負の判定
+    if player_hand === enemy_hand
+      puts "あいこ"
+      player = Player.new
+      enemy = Enemy.new
+      janken = Janken.new
+      janken.pon(player.hand, enemy.hand)
+    elsif 
+      (player_hand === 0 && enemy_hand === 1 || player_hand === 2 && enemy_hand === 0 || player_hand === 1 && enemy_hand == 2)
+      puts "あなたの勝ちです！"
+    else
+      puts "あなたの負けです"
+    end
   end
 end
 
@@ -62,8 +62,5 @@ enemy = Enemy.new
 # 変数「janken」にJankenをインスタンス化したものを代入します。
 janken = Janken.new
 
-# 勝負の結果があいこの場合、次の勝負へ
-next_game = true
-while next_game
-  next_game = janken.pon(player.hand, enemy.hand)
-end
+# ジャンケンをプレイ
+janken.pon(player.hand, enemy.hand)
